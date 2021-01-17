@@ -1,0 +1,23 @@
+body {
+    background-color: #313131;
+    /* Цвет фона веб-страницы */
+}
+/* .button{
+	box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.2);
+} */
+a.button {
+	padding: 10px 5px;
+	text-align: center;
+	display: block;
+	background: #2196f3;
+	color: #fff;
+	border-width: 2px;
+	border-style: solid;
+	border-color: aliceblue;
+	border-radius: 3px;
+	text-decoration: none;
+	font-family: Tahoma;
+	font-size: 18px;
+	line-height: 1;
+	font-weight: 100;
+  }

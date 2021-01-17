@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Karo's shop</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href="../static/css/login.css" th:href="@{css/login.css}" rel="stylesheet">
+	<link href="../static/css/common.css" th:href="@{css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+	<div style="height: 1vw;"></div>
+	<div class="container overflow-hidden gx-0">
+		<div class="row justify-content-center">
+			<div class="col-8 text-center form">
+				<form action="#" th:action="@{/login}" method="post">
+					<p class="text-light">Введите email</p>
+					<hr class="mx-auto" style="color:white; width: 50%;" />
+					<div class="row col-6 mx-auto"><input th:name="reset" type="email" /></div>
+					<p class="text-light" style="margin-top: 20px;">Введите пароль</p>
+					<hr class="mx-auto" style="color:white; width: 50%;" />
+					<div class="row col-6 mx-auto"><input th:name="password" type="password" /></div>
+					<div class="row col-5 mx-auto" style="margin-top: 10px;"><a class="button" href="/star-login">Войти</a></div>
+				</form>
+
+				<div class="mx-auto" style="margin-top: 50px;">
+					<p class="text-light mx-auto">Нет аккаунта?</p>
+					<div class="row col-5 mx-auto p-0"><a class="button" href="/registration">Зарегистрироваться</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-10 info mx-auto">
+			<div class="col-9">
+				<p class="text-light">© Интернет магазин "3D-напечатанные товары, 2020-2021"</p>
+			</div>
+			<div class="col-3">
+				<p class=""><a href="/">Вернуться на главную</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

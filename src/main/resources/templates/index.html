@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Karo's shop</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href="../static/css/common.css" th:href="@{css/common.css}" rel="stylesheet">
+	<link href="../static/css/index.css" th:href="@{css/index.css}" rel="stylesheet">
+</head>
+
+<body>
+
+	<div style="height: 3vw;"></div>
+	<div class="container overflow-hidden gx-0">
+		<div class="row justify-content-center">
+			<div class="col-2 header-color">
+				<img src="https://3er1viui9wo30pkxh1v2nh4w-wpengine.netdna-ssl.com/wp-content/uploads/prod/sites/42/2019/12/ganso4.png"
+					style="width: 100%;" />
+			</div>
+			<div class="col-5 d-flex flex-column">
+				<p>Телефон</p>
+				<h2>8(800)5553535</h2>
+				<ul class="menu text-center mt-4">
+					<li class="bord"><a href="#">КУПИТЬ</a></li>
+					<li class="bord"><a href="/contact">Доставка</a></li>
+					<li class="bord"><a href="/about-us">О магазине</a></li>
+					<li class="bord"><a href="/contact">Контакты</a></li>
+				</ul>
+			</div>
+			<div class="col-3">
+				<ul class="menu text-center">
+					<i class="bi-person" style="margin-left: 20px; font-size: 20px; color:white;"></i>
+					<li class="bord"><a href="/login">Вход</a></li>
+					<li class="bord"><a href="/registration">Регистрация</a></li>
+				</ul>
+				<div class="cart">
+					<p class="float-lg-start" style="padding-top:2px; margin-left:-8px;"><a class="button"
+							href="/cart"><i class="bi-cart" style="margin-right: 5px; font-size: 30px;"></i>Корзина</a>
+					</p>
+					<!-- <p class="text-center">Корзина пуста, добавьте товары</p> -->
+					<p class="text-center" th:text="${cartquantity}">Placeholder</p>
+					<p class="text-center" th:text="${cartprice}"></p>
+				</div>
+			</div>
+
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-2">
+				<ul class="section text-center" style="font-size:27px;">
+					<li><a>Каталог:</a></li>
+					<li><a href="#">раздел 1</a></li>
+					<li><a href="#">раздел 2</a></li>
+					<li><a href="#">раздел 3</a></li>
+
+				</ul>
+			</div>
+			<div class="col-8">
+				<div class="ads-ban">
+					<p class="text-center" style="color:black; padding:5px; font-size: 30px;font-family: Tahoma;">
+						Подарите
+						своим <br> близким подарки <br> по собственному <br> дизайну</p>
+				</div>
+				<div class="row justify-content-center shop-content">
+					<div class="product col-6" th:each="item : ${items}">
+						<img class="product-img" th:src="'/img/'+${item.imgLink}" />
+						<h2><a th:href="'/item?id='+${item.id}" class="product-name" th:text="${item.name}">Товар 1</a>
+						</h2>
+						<div class="d-flex justify-content-between">
+							<div>
+								<p style="font-size: 32px" th:text="${item.price}+'p'"></p>
+							</div>
+							<div>
+								<a class="button" href="#">Добавить в корзину</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-11 info">
+				<p>© Интернет магазин "3D-напечатанные товары, 2020-2021"</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

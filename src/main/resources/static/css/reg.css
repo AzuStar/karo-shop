@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* p{
+	color:white;
+	font-size: 30px;
+	font-family: Tahoma;
+} */
+
+input{
+	/* font-family: Tahoma;
+	font-size: 30px; */
+	border-radius:6px;
+	box-shadow:0 0 15px 4px rgba(255,255,255,0.2);
+	
+}
+
+.row p{
+margin: 0px;
+margin-top: 10px;
+padding: 0px;
+}
+
+.form{
+	border: white solid;
+	padding: 70px 0px;
+	border-radius: 10px;
+}
+
+.info{
+	border: solid white;
+	padding:20px;
+	border-radius: 10px;
+}

@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1{
+	color:white;
+}
+
+
+.form{
+	border: white solid;
+	padding: 100px;
+	border-radius: 10px;
+}
+
+.info{
+	border: solid white;
+	padding:20px;
+	border-radius: 10px;
+}
+
+.product-img{
+	
+	border: white solid;
+	width: 300px;
+	height: 300px;
+	object-fit: cover 
+	
+}
+
+.product-img{
+	margin: 5px;
+}

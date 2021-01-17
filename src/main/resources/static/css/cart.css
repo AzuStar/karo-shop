@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+.special {
+	color: white;
+	font-size: 30px;
+	font-family: Tahoma;
+}
+
+input {
+	font-family: Tahoma;
+	/* width: 400px;
+	height: 50px; */
+	font-size: 25px;
+	border-radius: 4px;
+	box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.2);
+
+}
+
+.form {
+	border: white solid;
+	border-radius: 6px;
+}
+
+.info {
+	border: solid white;
+	padding: 20px;
+	border-radius: 6px;
+}
+
+.product-img {
+	border-right: solid white;
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+
+}
+
+.info-text {
+	color: white;
+	font-size: 30px;
+	font-family: Tahoma;
+	font-size: 40px;
+}
