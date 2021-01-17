@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -27,9 +28,15 @@ public class RegistrationController {
     }
 
     @PostMapping("/star-registration")
-    public RedirectView hookTarget(@RequestParam String email, @RequestParam String passwd, @RequestParam String phone, ModelMap model){
-        AppDatabase.mainDB.execQuery("INSERT INTO users VALUES (\""+email+"\", \""+passwd+"\", \""+phone+"\", \"\");");
-        return new RedirectView("/login");
+    public ModelAndView hookTarget(@RequestParam String email, @RequestParam String passwd, @RequestParam String phone,
+            ModelMap model) {
+        AppDatabase.mainDB.execQuery("INSERT INTO users VALUES (\"" + email + "\", \"" + passwd + "\", \"" + phone
+                + "\", \"\", \"" + hash(email) + "\");");
+        return new ModelAndView("redirect:/login");
+    }
+
+    private int hash(String s) {
+        return (s.hashCode() << 3) ^ 5;
     }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
@@ -18,9 +19,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class IndexController {
 
     @GetMapping("/")
-    public String hook(@ModelAttribute("sess") SessionData session, ModelMap model) {
+    public ModelAndView hook(@ModelAttribute("sess") SessionData session, ModelMap model) {
         model.addAttribute("items", ShopItem.ExistingItems.values());
-        return "index";
+        model.addAttribute("sesstoken", session.userToken);
+
+        // model.addAttribute("useremail", );
+        return new ModelAndView("index", model);
     }
 
     @ModelAttribute("sess")

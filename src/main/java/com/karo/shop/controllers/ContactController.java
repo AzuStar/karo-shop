@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class ContactController {
 
     @GetMapping("/contact")
-    public String hook(ModelMap model) {
-        return "contact";
+    public ModelAndView hook(ModelMap model) {
+        return new ModelAndView("contact");
     }
 
 }

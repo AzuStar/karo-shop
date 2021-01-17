@@ -4,16 +4,13 @@ import javax.websocket.Session;
 
 public class SessionData {
 
-    // public CartSession Cart;
-    public UserSession currentUser;
+    public String userToken = "";
 
     public SessionData(){
-        // Cart = new CartSession();
-        currentUser = null;
     }
 
     public void setUserSession(String userToken){
-
+        this.userToken = userToken;
     }
 
 

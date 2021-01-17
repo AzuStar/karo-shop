@@ -55,8 +55,9 @@
 				</p>
 				<p class="text-light" th:text="${item.description}"></p>
 				<p class="text-light" style="font-size: 30px;" th:text="'Цена: '+${item.price}"></p>
-				<p class="" style="">
-					<a class="button" href="#">Добавить в корзину</a></p>
+				<form id="star-additem" action="#" th:action="@{/star-additem}" method="post">
+					<input type="hidden" th:value="${item.id}" name="id">
+					<a class="button" onclick="document.getElementById('star-additem').submit();">Добавить в корзину</a></form>
 			</div>
 
 

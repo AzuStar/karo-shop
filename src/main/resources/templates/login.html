@@ -22,17 +22,20 @@
 	<div class="container overflow-hidden gx-0">
 		<div class="row justify-content-center">
 			<div class="col-8 text-center form">
-				<form action="#" th:action="@{/login}" method="post">
+				<form action="#" th:action="@{/star-login}" method="post" id="star-login">
 					<p class="text-light">Введите email</p>
 					<hr class="mx-auto" style="color:white; width: 50%;" />
-					<div class="row col-6 mx-auto"><input th:name="reset" type="email" /></div>
+					<div class="row col-6 mx-auto"><input name="email" type="email" /></div>
 					<p class="text-light" style="margin-top: 20px;">Введите пароль</p>
 					<hr class="mx-auto" style="color:white; width: 50%;" />
-					<div class="row col-6 mx-auto"><input th:name="password" type="password" /></div>
-					<div class="row col-5 mx-auto" style="margin-top: 10px;"><a class="button" href="/star-login">Войти</a></div>
+					<div class="row col-6 mx-auto"><input name="passwd" type="password" /></div>
+					<div class="row col-5 mx-auto" style="margin-top: 10px;"><a class="button" onclick="document.getElementById('star-login').submit();">Войти</a></div>
 				</form>
+				<div class="row mx-auto my-4" th:if="${wrong == true}">
+					<p style="color: brown;">Неверная почта или пароль!</p>
+				</div>
 
-				<div class="mx-auto" style="margin-top: 50px;">
+				<div class="mx-auto mt-4">
 					<p class="text-light mx-auto">Нет аккаунта?</p>
 					<div class="row col-5 mx-auto p-0"><a class="button" href="/registration">Зарегистрироваться</a></div>
 				</div>

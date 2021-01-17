@@ -12,6 +12,7 @@ import com.karo.shop.session.SessionData;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +36,8 @@ public class Test {
     // }
 
     @RequestMapping(value = "/test", method = { RequestMethod.POST, RequestMethod.GET })
-    public String requestHook(@RequestParam(defaultValue = "false", required = false) boolean reset,
-            @ModelAttribute("sess") SessionData session, Model model) {
+    public ModelAndView requestHook(@RequestParam(defaultValue = "false", required = false) boolean reset,
+            @ModelAttribute("sess") SessionData session, ModelMap model) {
 
         
         model.addAttribute("incart", ShopItem.ExistingItems.values().toArray());
@@ -45,7 +46,7 @@ public class Test {
         // 1);
         // else
         // session.getCartItems().clear();
-        return "test";
+        return new ModelAndView("test", model);
     }
 
     @ModelAttribute("sess")

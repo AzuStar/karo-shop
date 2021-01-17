@@ -2,7 +2,7 @@ package com.karo.shop.session;
 
 public class UserSession {
 
-    public String userToken;
+    public String userToken = "";
 
     // Analytics
     // Recommendations

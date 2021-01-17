@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
 	<div style="height: 3vw;"></div>
 	<div class="container overflow-hidden gx-0">
 		<div class="row justify-content-center">
@@ -36,11 +35,13 @@
 				</ul>
 			</div>
 			<div class="col-3">
-				<ul class="menu text-center">
+				<div class="menu d-flex justify-content-evenly">
 					<i class="bi-person" style="margin-left: 20px; font-size: 20px; color:white;"></i>
-					<li class="bord"><a href="/login">Вход</a></li>
-					<li class="bord"><a href="/registration">Регистрация</a></li>
-				</ul>
+					<ul class="text-center my-auto" th:if="${}">
+						<li class="bord"><a href="/login">Вход</a></li>
+						<li class="bord"><a href="/registration">Регистрация</a></li>
+					</ul>
+				</div>
 				<div class="cart">
 					<p class="float-lg-start" style="padding-top:2px; margin-left:-8px;"><a class="button"
 							href="/cart"><i class="bi-cart" style="margin-right: 5px; font-size: 30px;"></i>Корзина</a>
