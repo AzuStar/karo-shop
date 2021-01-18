@@ -13,7 +13,7 @@ public class DBSocket {
 
 	protected String database = null;
 
-	Connection con = null;
+	public Connection con;
 
 	public DBSocket(String database) {
 		this.database = database;
@@ -45,7 +45,7 @@ public class DBSocket {
 		try {
 			return con.createStatement().executeQuery(statement);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 		return null;
 	}

@@ -1,5 +1,9 @@
 package com.karo.shop.controllers;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.karo.shop.AppDatabase;
 import com.karo.shop.data.User;
 import com.karo.shop.session.SessionData;
@@ -29,9 +33,16 @@ public class RegistrationController {
 
     @PostMapping("/star-registration")
     public ModelAndView hookTarget(@RequestParam String email, @RequestParam String passwd, @RequestParam String phone,
-            ModelMap model) {
-        AppDatabase.mainDB.execQuery("INSERT INTO users VALUES (\"" + email + "\", \"" + passwd + "\", \"" + phone
-                + "\", \"\", \"" + hash(email) + "\");");
+            ModelMap model) throws Exception {
+        AppDatabase.mainDB.execQuery("INSERT INTO cart(userid) VALUES(\"" + email + "\");");
+        ResultSet res = AppDatabase.mainDB.execQuery("SELECT last_insert_rowid();");
+        try {
+            res.next();
+            AppDatabase.mainDB.execQuery("INSERT INTO users VALUES (\"" + email + "\", \"" + passwd + "\", \"" + phone
+                    + "\", \"" + res.getInt(1) + "\", \"" + hash(email) + "\");");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return new ModelAndView("redirect:/login");
     }
 

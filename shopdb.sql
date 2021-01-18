@@ -16,9 +16,8 @@ CREATE TABLE cartitem(
 );
 
 CREATE TABLE cart(
-	userid INTEGER NOT NULL, 
-	cartid INTEGER NOT NULL UNIQUE,
-	PRIMARY KEY (cartid),
+	userid TEXT NOT NULL, 
+	cartid INTEGER PRIMARY KEY,
 	FOREIGN KEY (cartid) REFERENCES cartitem (cartid)
 );
 

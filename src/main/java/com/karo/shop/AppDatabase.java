@@ -18,8 +18,9 @@ public class AppDatabase implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        ResultSet items = AppDatabase.mainDB.execQuery("select * from shopitem;");
+        ResultSet items;
         try {
+            items = AppDatabase.mainDB.getRecords("shopitem");
             while (items.next()) {
                 ShopItem.ExistingItems.put(items.getInt(1), new ShopItem(items.getInt(1), items.getString(2),
                         items.getString(3), items.getDouble(4), items.getString(5)));

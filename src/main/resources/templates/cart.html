@@ -22,13 +22,12 @@
 	<div class="container overflow-hidden gx-0">
 		<div class="row justify-content-center">
 			<div class="col-10 form">
-				<div class="col-8 mx-auto form d-flex mt-3 justify-content-between">
+				<div class="col-8 mx-auto form d-flex mt-3 justify-content-between" th:each="item : ${cart.items}">
 					<div class="my-auto">
-						<img class=" product-img cart-n"
-							src="https://i.pinimg.com/originals/7e/4c/2d/7e4c2db50aa6074482cb719028f917d4.jpg" />
+						<img class=" product-img cart-n" th:src="'/img/'+${item.meta.imgLink}" />
 					</div>
-					<div class="info-text my-auto">1000р</div>
-					<div class="info-text my-auto">10 ед</div>
+					<div class="info-text my-auto" th:text="${item.total}">1000р</div>
+					<div class="info-text my-auto" th:text="${item.quantity}">10 ед</div>
 					<a class="my-auto" href="#" style="margin-right: 15px;">
 						<i class="bi-trash" style="font-size: 30px; color: #2196f3;"></i>
 					</a>
@@ -36,7 +35,7 @@
 				<div class="row mt-4">
 					<div class="mt-3 justify-content-end d-flex">
 						<div class="text-white text-decoration-underline" style="font-size: 30px;">
-							Всего рублей: 30000
+							Всего рублей: <span th:text="${cart.price}">3000</span>
 						</div>
 					</div>
 					<div class="mt-3 mx-auto col-8">
@@ -58,17 +57,15 @@
 						</div>
 						<div class="row col-6 mx-auto my-4">
 							<div>
-							<a class="button" href="#" type="submit">Добавить в корзину</a>
+								<a class="button" href="#" type="submit">Сдеклть закувтаьхх</a> </div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
-
-		</div>
-		<br>
+		</div> <br>
 		<div class="col-12 info">
-			<p class="text-light" >© Интернет магазин "3D-напечатанные товары, 2020-2021",</p>
+			<p class="text-light">© Интернет магазин "3D-напечатанные товары, 2020-2021",
+			</p>
 			<p class=""><a href="/">Вернуться на главную</a></p>
 		</div>
 	</div>

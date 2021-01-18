@@ -1,7 +1,10 @@
 package com.karo.shop.controllers;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.karo.shop.AppDatabase;
 import com.karo.shop.data.ShopItem;
 import com.karo.shop.session.SessionData;
 
@@ -19,11 +22,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @GetMapping("/")
-    public ModelAndView hook(@ModelAttribute("sess") SessionData session, ModelMap model) {
+    public ModelAndView hook(@ModelAttribute("sess") SessionData session, ModelMap model) throws SQLException {
         model.addAttribute("items", ShopItem.ExistingItems.values());
-        model.addAttribute("sesstoken", session.userToken);
 
-        // model.addAttribute("useremail", );
+        if (!session.userToken.isEmpty()) {
+            ResultSet result = AppDatabase.mainDB.execQuery(
+                    "select sum(itemquantity) from cartitem where cartitem.cartid=(select currentcart from users where usertoken=\""
+                            + session.userToken + "\")");
+            model.addAttribute("cartquantity", result.getInt(1));
+            result = AppDatabase.mainDB.execQuery(
+                    "select sum(shopitem.price*cartitem.itemquantity) from cartitem join shopitem on cartitem.itemid=shopitem.itemid where cartitem.cartid=(select currentcart from users where usertoken=\""
+                            + session.userToken + "\");");
+            model.addAttribute("cartprice", result.getDouble(1));
+        }
         return new ModelAndView("index", model);
     }
 

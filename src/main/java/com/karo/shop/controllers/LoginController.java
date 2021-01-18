@@ -3,6 +3,7 @@ package com.karo.shop.controllers;
 import java.sql.ResultSet;
 
 import com.karo.shop.AppDatabase;
+import com.karo.shop.data.User;
 import com.karo.shop.session.SessionData;
 
 import org.springframework.stereotype.Controller;
@@ -34,14 +35,15 @@ public class LoginController {
     @PostMapping("/star-login")
     public ModelAndView hookStarLoginPage(@RequestParam String email, @RequestParam String passwd,
             @ModelAttribute("sess") SessionData session, ModelMap model) throws Exception {
-        ResultSet result = AppDatabase.mainDB
-                .execQuery("select usertoken from users where users.email=\"" + email + "\" and users.passwd=\"" + passwd+"\"");
+        ResultSet result = AppDatabase.mainDB.execQuery(
+                "select * from users where users.email=\"" + email + "\" and users.passwd=\"" + passwd + "\"");
 
         if (result == null) {
             model.addAttribute("wrong", true);
             return new ModelAndView("redirect:/login", model);
         }
-        session.setUserSession(result.getString("usertoken"));
+        session.setUserSession(result.getString("usertoken"),
+                new User(result.getString("email"), result.getString("phone")));
         return new ModelAndView("redirect:/", model);
     }
 

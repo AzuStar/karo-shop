@@ -37,18 +37,20 @@
 			<div class="col-3">
 				<div class="menu d-flex justify-content-evenly">
 					<i class="bi-person" style="margin-left: 20px; font-size: 20px; color:white;"></i>
-					<ul class="text-center my-auto" th:if="${}">
+					<ul class="text-center my-auto" th:if="${#strings.isEmpty(sess.userToken)}">
 						<li class="bord"><a href="/login">Вход</a></li>
 						<li class="bord"><a href="/registration">Регистрация</a></li>
 					</ul>
+					<p class="my-auto" th:if="${!#strings.isEmpty(sess.userToken)}" th:text="${sess.user.email}"></p>
 				</div>
-				<div class="cart">
+				<div class="cart d-flex justify-content-between">
 					<p class="float-lg-start" style="padding-top:2px; margin-left:-8px;"><a class="button"
 							href="/cart"><i class="bi-cart" style="margin-right: 5px; font-size: 30px;"></i>Корзина</a>
 					</p>
-					<!-- <p class="text-center">Корзина пуста, добавьте товары</p> -->
-					<p class="text-center" th:text="${cartquantity}">Placeholder</p>
+					<div class="my-auto" th:if="${!#strings.isEmpty(sess.userToken)}">
+					<p class="text-center" th:text="${cartquantity}"></p>
 					<p class="text-center" th:text="${cartprice}"></p>
+				</div>
 				</div>
 			</div>
 
@@ -79,7 +81,7 @@
 								<p style="font-size: 32px" th:text="${item.price}+'p'"></p>
 							</div>
 							<div>
-								<a class="button" href="#">Добавить в корзину</a>
+								<a class="button" th:href="'/star-additem?id='+${item.id}">Добавить в корзину</a>
 							</div>
 						</div>
 					</div>
